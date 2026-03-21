@@ -1,0 +1,24 @@
+{
+  "name": "@ppa/mobile",
+  "private": true,
+  "version": "0.0.1",
+  "main": "expo-router/entry",
+  "scripts": {
+    "dev": "expo start",
+    "build": "tsc --noEmit",
+    "lint": "tsc --noEmit",
+    "test": "node -e \"console.log('mobile tests not configured yet')\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@ppa/shared": "workspace:*",
+    "expo": "^52.0.0",
+    "expo-router": "^4.0.17",
+    "react": "^18.3.1",
+    "react-native": "^0.76.3"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.2",
+    "@types/react": "^18.3.12"
+  }
+}
