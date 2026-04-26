@@ -1,28 +1,52 @@
-# Personal Performance App
+# Controlled RAG Office Assistant (Starter Monorepo)
 
-A mobile-first TypeScript monorepo for a personal performance operating system. This foundation prepares a React Native mobile client, a Node.js API, a Prisma/PostgreSQL data layer, and shared validation/types for future multi-user growth.
+A controlled assistant for official administrative workflows with React frontend + FastAPI backend.
+
+## Tech stack
+
+- **Frontend:** React (Vite + TypeScript)
+- **Backend:** Python FastAPI
+- **Database target:** PostgreSQL + pgvector (integration points scaffolded)
+- **AI stack:** OpenAI embeddings + chat model (strict retrieval-grounded answering)
+
+## Modules in this starter
+
+1. Document repository (upload endpoint for PDF/DOCX)
+2. Metadata tagging (data model placeholder in retrieval pipeline)
+3. Search with citations (document + page + chunk id)
+4. Communication classifier
+5. Draft note/reply generator
+6. Task/deadline tracker
+
+## Strict governance rules encoded
+
+- AI answers only from retrieved chunks.
+- Every answer carries source citations.
+- If no reliable source exists, the API returns that explicitly.
+- No auto-dispatch support.
+- Human approval is mandatory for drafts.
 
 ## Workspace layout
 
-- `apps/mobile` — Expo Router mobile application shell
-- `apps/api` — Node.js API starter with modular service layout
-- `packages/shared` — shared domain types and validation helpers
-- `prisma` — starter Prisma schema for users and profiles
-- `docs` — product and architecture notes
+- `apps/web` — React frontend starter
+- `backend` — FastAPI RAG and workflow starter
+- `docs/architecture.md` — control-plane and module architecture
 
-## Getting started
+## Development
 
-1. Install pnpm 10+
-2. Run `pnpm install`
-3. Copy environment templates from each app
-4. Use `pnpm dev:mobile` or `pnpm dev:api`
+### Frontend
 
-## Included foundations
+```bash
+pnpm install
+pnpm dev:web
+```
 
-- pnpm workspace configuration
-- centralized TypeScript base config
-- Expo Router starter app structure
-- Node API starter with auth/profile modules
-- Prisma schema for `User` and `Profile`
-- shared Zod schemas and TypeScript types
-- lint, test, and typecheck scripts wired per package
+### Backend
+
+```bash
+cd backend
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+```
