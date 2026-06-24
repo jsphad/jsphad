@@ -1,52 +1,38 @@
-# Controlled RAG Office Assistant (Starter Monorepo)
+# MahaMediConnect / Maha Aushadh Seva Prototype
 
-A controlled assistant for official administrative workflows with React frontend + FastAPI backend.
+A compliance-first, multilingual UI prototype for a Maharashtra-level hyperlocal medical retailer marketplace, focused on the Raigad district pilot.
 
-## Tech stack
+The product connects citizens with nearby licensed medical retailers for medicines, OTC products, cosmetics, wellness, devices, baby care, elderly care, diabetes care, and local home delivery. The interface is designed as a trusted healthcare access platform rather than an aggressive discount marketplace.
 
-- **Frontend:** React (Vite + TypeScript)
-- **Backend:** Python FastAPI
-- **Database target:** PostgreSQL + pgvector (integration points scaffolded)
-- **AI stack:** OpenAI embeddings + chat model (strict retrieval-grounded answering)
+## Prototype scope
 
-## Modules in this starter
-
-1. Document repository (upload endpoint for PDF/DOCX)
-2. Metadata tagging (data model placeholder in retrieval pipeline)
-3. Search with citations (document + page + chunk id)
-4. Communication classifier
-5. Draft note/reply generator
-6. Task/deadline tracker
-
-## Strict governance rules encoded
-
-- AI answers only from retrieved chunks.
-- Every answer carries source citations.
-- If no reliable source exists, the API returns that explicitly.
-- No auto-dispatch support.
-- Human approval is mandatory for drafts.
+- **Customer mobile app wireframes:** onboarding, language, OTP login, location, home, search, product details, retailer listing, prescription upload, cart, checkout, tracking, history, chronic refill, family profile, emergency locator, complaints, and settings.
+- **Customer web portal:** responsive homepage, search, retailer page, prescription upload, cart/checkout, order tracking, and health content.
+- **Retailer dashboard:** licence-aware login, order handling, pharmacist prescription verification, stock updates, settlements, compliance, and support.
+- **Delivery app:** pickup OTP, routing, delivery OTP, status updates, and privacy guardrails.
+- **Admin dashboard:** Raigad overview, retailer approvals, order management, prescription compliance, catalogue, complaints, analytics, audit logs, and settings.
+- **Optional regulator concept:** aggregated authorised compliance views without exposing personal prescription data.
+- **Design system and flows:** accessible colours, Devanagari-friendly typography, trust badges, prescription status labels, user journey diagrams, and responsive layout rules.
 
 ## Workspace layout
 
-- `apps/web` — React frontend starter
-- `backend` — FastAPI RAG and workflow starter
-- `docs/architecture.md` — control-plane and module architecture
+- `apps/web` — React + Vite clickable prototype
+- `apps/mobile` — Expo starter workspace
+- `apps/api` — TypeScript API starter workspace
+- `backend` — FastAPI starter services retained from the original scaffold
+- `docs/maha-medi-connect-design.md` — product blueprint and design system notes
+- `docs/architecture.md` — original technical architecture notes
 
 ## Development
-
-### Frontend
 
 ```bash
 pnpm install
 pnpm dev:web
 ```
 
-### Backend
+## Validation
 
 ```bash
-cd backend
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-uvicorn app.main:app --reload
+pnpm --filter @office/web typecheck
+pnpm --filter @office/web build
 ```
